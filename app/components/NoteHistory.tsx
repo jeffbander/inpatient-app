@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
@@ -13,6 +13,14 @@ const NOTE_TYPE_LABELS: Record<string, string> = {
   discharge: "Discharge Summary",
 };
 
+const NOTE_TYPE_OPTIONS = [
+  { value: "", label: "All Types" },
+  { value: "progress", label: "Progress Note" },
+  { value: "hp", label: "H&P" },
+  { value: "consult", label: "Consult Note" },
+  { value: "discharge", label: "Discharge Summary" },
+];
+
 interface NoteHistoryProps {
   onLoadNote?: (content: string) => void;
 }
@@ -22,6 +30,19 @@ export function NoteHistory({ onLoadNote }: NoteHistoryProps) {
   const deleteNote = useMutation(api.notes.deleteNote);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterType, setFilterType] = useState("");
+
+  const filteredNotes = useMemo(() => {
+    if (!notes) return [];
+
+    return notes.filter((note) => {
+      const matchesSearch = searchQuery === "" ||
+        note.content.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesType = filterType === "" || note.noteType === filterType;
+      return matchesSearch && matchesType;
+    });
+  }, [notes, searchQuery, filterType]);
 
   const handleDelete = async (noteId: Id<"notes">) => {
     if (!confirm("Are you sure you want to delete this note?")) return;
@@ -71,9 +92,48 @@ export function NoteHistory({ onLoadNote }: NoteHistoryProps) {
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
-      <h2 className="text-lg font-medium text-gray-900 mb-4">Note History</h2>
-      <div className="space-y-3 max-h-[500px] overflow-y-auto">
-        {notes.map((note) => (
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-lg font-medium text-gray-900">Note History</h2>
+        <span className="text-sm text-gray-500">
+          {filteredNotes.length === notes.length
+            ? `${notes.length} note${notes.length === 1 ? "" : "s"}`
+            : `${filteredNotes.length} of ${notes.length} notes`}
+        </span>
+      </div>
+
+      {/* Search and Filter Controls */}
+      <div className="flex flex-col sm:flex-row gap-3 mb-4">
+        <div className="flex-1">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search notes..."
+            className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+          />
+        </div>
+        <div className="sm:w-48">
+          <select
+            value={filterType}
+            onChange={(e) => setFilterType(e.target.value)}
+            className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 bg-white"
+          >
+            {NOTE_TYPE_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {filteredNotes.length === 0 ? (
+        <p className="text-gray-500 text-sm py-4 text-center">
+          No notes match your search criteria.
+        </p>
+      ) : (
+        <div className="space-y-3 max-h-[500px] overflow-y-auto">
+          {filteredNotes.map((note) => (
           <div
             key={note._id}
             className="border border-gray-200 rounded-md p-4"
@@ -135,7 +195,8 @@ export function NoteHistory({ onLoadNote }: NoteHistoryProps) {
             )}
           </div>
         ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
