@@ -201,18 +201,103 @@ Visit Diagnoses:
 Problem List:
 [Active problem list]`,
 
-  hp: `Generate a History and Physical (H&P) note with these sections:
-- Chief Complaint
-- History of Present Illness (HPI)
-- Past Medical History (PMH)
-- Medications
-- Allergies
-- Social History
-- Family History
-- Review of Systems
-- Physical Examination
-- Assessment
-- Plan`,
+  hp: `Generate a Pre-Procedural History and Physical (H&P) for Admission with the following structure and sections:
+
+**PATIENT DEMOGRAPHICS:**
+- Patient Name, DOB, Age
+- Medical Record Number
+- Admission Date
+- Admitted Via (e.g., Ambulatory, ED, Transfer)
+- Information Source
+- Outpatient PCP
+
+**SUBJECTIVE/OBJECTIVE:**
+
+**Chief Complaint:** (brief statement of presenting problem)
+
+**History of Present Illness:** (detailed narrative including relevant history, timeline, prior interventions, current presentation)
+
+**Past Medical History:**
+(bulleted list of diagnoses including):
+- Cardiac conditions (angina, afib, CHF, etc.)
+- Chronic conditions (diabetes, hypertension, etc.)
+- Prior procedures/surgeries related to current condition
+
+**Past Surgical History:**
+(list procedures with laterality if applicable):
+- Procedure name | Laterality | Date
+
+**Social History:**
+- Marital status
+- Tobacco Use: Smoking status, Smokeless tobacco
+- Alcohol use
+- Drug use
+- Occupational History
+
+**Social Drivers of Health:**
+- Housing Stability
+- Food Insecurity
+- Transportation Needs
+- Financial Resource Strain
+
+**Family History:**
+(table format: Problem | Relation | Age of Onset)
+- Cardiac Disease
+- Other relevant conditions
+
+**Immunization Hx:** (Known/Unknown)
+
+**Allergies:**
+(Allergen | Reaction)
+
+**Medications at Home or Prior to Hospitalization:**
+(list home medications)
+
+**Inpatient Medications:**
+(Current Facility-Administered Medications)
+- Medication | Dose | Route | Frequency
+
+**Review of Systems:**
+All systems were reviewed and found to be negative except as per HPI or specified below:
+(document pertinent positives/negatives)
+
+**PHYSICAL EXAM:**
+
+**Vital Signs:**
+- BP, Pulse, Resp, Temp, SpO2, Weight, Height
+
+**Constitutional:** (NAD, A&Ox3, etc.)
+**HEENT:** (supple, FROM, etc.)
+**Cardiovascular:** (RRR, murmurs, etc.)
+**Respiratory:** (unlabored, breath sounds, etc.)
+**Gastrointestinal:** (soft/non-tender, etc.)
+**Extremity:** (strength/sensation, pulses, discoloration, edema)
+**Neuro:** (language, cranial nerves, mental status)
+**Vascular:** (pulse assessment - femoral, DP, PT signals)
+
+**Labs:**
+(Component | Value | Date)
+- CBC, BMP, Coagulation studies
+- Any relevant specialized labs
+
+**Imaging:**
+- Study type and date
+- Results and interpretation
+- Attending physician review statement if applicable
+
+**ASSESSMENT/PLAN:**
+
+Assessment: (Brief summary - age, sex, presenting with condition, key findings)
+
+Plan:
+☐ NPO status
+☐ IV access/fluids
+☐ Anticoagulation plan
+☐ Admit to service
+☐ OR planning/procedure scheduling
+☐ Other interventions
+
+Discussed with Dr. [Attending Name]`,
 
   consult: `Generate a Consultation Note with these sections:
 - Reason for Consultation
