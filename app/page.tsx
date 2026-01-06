@@ -9,6 +9,7 @@ import { CopyButton } from "./components/CopyButton";
 import { Disclaimer } from "./components/Disclaimer";
 import { NoteHistory } from "./components/NoteHistory";
 import { TextStats } from "./components/TextStats";
+import { PatientTracker } from "./components/PatientTracker";
 
 type NoteType = "progress" | "hp" | "consult" | "discharge";
 
@@ -160,6 +161,11 @@ export default function Home() {
         {/* Note History */}
         <div className="mt-6">
           <NoteHistory onLoadNote={setGeneratedNote} />
+        </div>
+
+        {/* ICU Patient Tracker */}
+        <div className="mt-6">
+          <PatientTracker />
         </div>
       </div>
     </main>
