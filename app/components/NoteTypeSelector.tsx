@@ -1,6 +1,6 @@
 "use client";
 
-type NoteType = "progress" | "hp" | "consult" | "discharge";
+type NoteType = "progress" | "hp" | "consult" | "discharge" | "icu_tracker";
 
 interface NoteTypeSelectorProps {
   value: NoteType;
@@ -12,6 +12,7 @@ const NOTE_TYPES: { value: NoteType; label: string }[] = [
   { value: "hp", label: "H&P" },
   { value: "consult", label: "Consult Note" },
   { value: "discharge", label: "Discharge Summary" },
+  { value: "icu_tracker", label: "ICU Patient Tracker" },
 ];
 
 export function NoteTypeSelector({ value, onChange }: NoteTypeSelectorProps) {

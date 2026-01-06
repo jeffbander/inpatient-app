@@ -25,7 +25,8 @@ export const createNote = mutation({
       v.literal("progress"),
       v.literal("hp"),
       v.literal("consult"),
-      v.literal("discharge")
+      v.literal("discharge"),
+      v.literal("icu_tracker")
     ),
     content: v.string(),
   },

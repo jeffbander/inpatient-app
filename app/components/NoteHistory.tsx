@@ -11,6 +11,7 @@ const NOTE_TYPE_LABELS: Record<string, string> = {
   hp: "H&P",
   consult: "Consult Note",
   discharge: "Discharge Summary",
+  icu_tracker: "ICU Patient Tracker",
 };
 
 const NOTE_TYPE_OPTIONS = [
@@ -19,6 +20,7 @@ const NOTE_TYPE_OPTIONS = [
   { value: "hp", label: "H&P" },
   { value: "consult", label: "Consult Note" },
   { value: "discharge", label: "Discharge Summary" },
+  { value: "icu_tracker", label: "ICU Patient Tracker" },
 ];
 
 interface NoteHistoryProps {
