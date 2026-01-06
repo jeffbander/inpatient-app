@@ -8,6 +8,7 @@ import { NoteTypeSelector } from "./components/NoteTypeSelector";
 import { CopyButton } from "./components/CopyButton";
 import { Disclaimer } from "./components/Disclaimer";
 import { NoteHistory } from "./components/NoteHistory";
+import { TextStats } from "./components/TextStats";
 
 type NoteType = "progress" | "hp" | "consult" | "discharge";
 
@@ -114,6 +115,7 @@ export default function Home() {
                 placeholder="Paste all relevant patient information here..."
                 className="w-full h-64 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 resize-none"
               />
+              <TextStats text={patientData} className="mt-2" />
             </div>
 
             <button
@@ -151,6 +153,7 @@ export default function Home() {
               placeholder={isGenerating ? "Generating note..." : "Generated note will appear here..."}
               className="w-full h-[400px] px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 resize-none font-mono text-sm"
             />
+            <TextStats text={generatedNote} className="mt-2" />
           </div>
         </div>
 
