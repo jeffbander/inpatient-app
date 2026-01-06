@@ -309,15 +309,137 @@ Discussed with Dr. [Attending Name]`,
 - Assessment
 - Recommendations`,
 
-  discharge: `Generate a Discharge Summary with these sections:
-- Admission Date / Discharge Date
-- Admitting Diagnosis
-- Discharge Diagnosis
-- Hospital Course
-- Procedures Performed
-- Discharge Medications
-- Discharge Instructions
-- Follow-up Appointments`,
+  discharge: `Generate a Discharge Summary in the following format. Use the exact section headers and structure shown below. Leave sections blank or write "N/A" if data is not available.
+
+---
+
+**Discharge Summary**
+
+**Admitting diagnosis:** [Primary reason for admission]
+**Discharge diagnosis:** [Final diagnosis at discharge]
+**PCP:** [Primary Care Physician name]
+**Code Status:** [FULL CODE / DNR / DNI / etc.]
+
+**Date of Admission:** [MM/DD/YYYY]
+**Date of Discharge:** [MM/DD/YYYY]
+
+---
+
+**Chief Complaint:** [Brief presenting complaint]
+
+---
+
+**History of Present Illness:**
+
+[Patient Name] is a [age] [gender] w/PMHx significant for [relevant past medical history] who presented to [hospital/facility] on [date] with [presenting symptoms/complaint].
+
+[Detailed narrative of the presenting illness, including:
+- Onset and progression of symptoms
+- Associated symptoms
+- Relevant prior interventions or treatments
+- What prompted the current presentation]
+
+[Include pertinent negatives - e.g., "Otherwise denies fevers, chills, diarrhea, constipation, urinary sx, leg pain and swelling."]
+
+---
+
+**ED Events**
+On triage in ED: BP [value] | HR [value] | RR [value] | Temp [value] | SpO2 [value]% on [room air/supplemental O2]
+
+Basic labs notable for:
+- CBC: WBC [value], Hgb [value], Plt [value]
+- BMP: Na [value], K [value], Cl [value], CO2 [value], BUN [value], Cr [value], Glucose [value]
+- HFP: Albumin [value], AST [value], ALT [value], T. Bilirubin [value], Alk phos [value]
+- Coags: PT [value], PTT [value]
+- VBG: pH [value], pCO2 [value]
+- Lipase [value]
+- HS-trop [value]
+
+EKG
+- [EKG findings - rhythm, rate, notable abnormalities]
+
+Imaging
+- [Imaging studies performed in ED with key findings]
+
+[Medications/interventions given in ED]
+
+---
+
+**Hospital Course by Service:**
+
+**[Unit/Service] Course ([Date range]):**
+[Detailed narrative of patient's course on this service, including:
+- Consultations obtained
+- Procedures performed
+- Treatment initiated
+- Response to treatment
+- Complications encountered]
+
+**[Additional Service] Course ([Date range]):**
+[Continue with additional services as applicable, documenting:
+- Assessments made at bedside
+- Changes in clinical status
+- Diagnostic workup results
+- Treatment modifications
+- Progress toward discharge readiness]
+
+[Include relevant clinical decision-making, e.g., "From a surgical perspective, patient is recovering well. Wounds look much improved with imaging showing resolution of the subcutaneous collections."]
+
+[Document functional status assessment if applicable - PT/OT evaluations, mobility, safety for discharge]
+
+---
+
+**Discharge Exam:**
+BP [value] (BP Location: [location]) | Pulse [value] | Temp [value] °C ([value] °F) ([method]) | Resp [value] | Ht [value] ([value]) | Wt [value] kg ([value] lb) | SpO2 [value]% | BMI [value] kg/m²
+
+General: [findings - e.g., No acute distress]
+Head/eyes/nose/throat: [findings - e.g., Oropharynx moist, no lesions]
+Neck: [findings - e.g., Supple, Trachea midline]
+CV: [findings - e.g., S1, S2. Regular. No murmurs, gallops, or rubs]
+Respiratory: [findings - e.g., Lungs clear to auscultation bilaterally]
+Abdomen: [findings - e.g., Positive bowel sounds, soft, TTP throughout]
+Extremities: [findings - e.g., No LE edema. No asymmetry]
+Psych: [findings - e.g., Normal affect]
+
+---
+
+**Complications:** [List complications or "N/A"]
+
+---
+
+**Procedures:** [List procedures with dates - e.g., "I&D 12/19, 12/22" or "N/A"]
+
+---
+
+**Condition upon Discharge:** [Stable / Improved / Guarded / etc.]
+
+---
+
+**Discharge Medications:**
+[List all discharge medications with dose, route, frequency, and any changes from admission medications. Indicate NEW, CHANGED, or DISCONTINUED medications]
+
+---
+
+**Discharge Instructions:**
+[Patient-specific discharge instructions including:
+- Activity restrictions
+- Diet modifications
+- Wound care instructions if applicable
+- Warning signs to return to ED
+- Medication instructions]
+
+---
+
+**Follow-up Appointments:**
+[List follow-up appointments with specialty, provider name if known, and timeframe]
+
+---
+
+**To-Do At Follow-Up Visit:** [Tasks for outpatient follow-up - e.g., "f/u surgeon", "repeat labs"]
+
+---
+
+**Unresulted Tests/Studies:** [List any pending results or "N/A"]`,
 };
 
 const SYSTEM_PROMPT = `You are a clinical documentation assistant helping healthcare providers create structured clinical notes.
