@@ -299,15 +299,172 @@ Plan:
 
 Discussed with Dr. [Attending Name]`,
 
-  consult: `Generate a Consultation Note with these sections:
-- Reason for Consultation
-- History of Present Illness
-- Relevant Past Medical History
-- Current Medications
-- Physical Examination Findings
-- Relevant Lab/Imaging Results
-- Assessment
-- Recommendations`,
+  consult: `Generate a Surgery Consult H&P in the following format. Use the exact section headers and structure shown below. Leave sections blank or write "Not documented" if data is not available.
+
+---
+
+**[Provider Name, Credentials]**
+[Title/Level]
+[Specialty]
+
+Consults: [Consult Type]
+Cosign Needed: [Yes/No]
+
+Date of Service: [MM/DD/YY HH:MM]
+Creation Time: [MM/DD/YY HH:MM]
+
+---
+
+**Surgery Consult H&P**
+
+---
+
+**Patient:** [Patient Full Name]  **DOB:** [MM/DD/YYYY]
+**Medical Record Number:** [MRN]  **Admission Date:** [MM/DD/YYYY]
+
+---
+
+**Reason for Consult:** [Brief reason for surgical consultation]
+
+---
+
+**History of Present Illness:**
+
+[Patient Name] is a [age] y.o. [gender] with PMH [relevant past medical history including cardiac history, prior surgeries with dates], admitted to [service] [admission date] - present for [primary diagnosis].
+
+[Detailed clinical narrative including:
+- How patient was admitted/transferred
+- Initial workup findings (imaging, labs)
+- Hospital course and treatment to date
+- Current clinical status
+- Relevant symptoms and their progression]
+
+[Physical exam findings relevant to consult - e.g., "Patient evaluated at bedside. Says that she is still having pain that is improved with medication but unmanageable without it. Normal BMs. No nausea currently. Denies fever/chills."]
+
+[Current clinical status summary - e.g., "Afebrile, HR 73, BP 135/72. WBC 4.7(6.8), no left shift. Hgb 10.7. Interval imaging findings."]
+
+---
+
+**Past Medical/Surgical History:**
+
+**Past Medical History:**
+| Diagnosis | Date |
+|-----------|------|
+[List each diagnosis with details and date if available]
+
+Examples:
+- Arthritis
+- CAD (coronary artery disease) with intervention details
+- Chest pain
+- Choledocholithiasis (with procedure details) | [Date]
+- Constipation
+- Hyperlipidemia
+- Pre-diabetes
+
+---
+
+**Past Surgical History:**
+| Procedure | Laterality | Date |
+|-----------|------------|------|
+[List each surgical procedure with laterality and date]
+
+Examples:
+- APPENDECTOMY
+- ERCP
+- ERCP, INSERT STENT, BILIARY/PANC
+- HX CARDIAC STENT PLACEMENT
+- TONSILLECTOMY, PRIMARY OR SECONDARY; AGE 12 OR OVER
+- US EXTREMITY VEIN STUDY COMP B
+
+---
+
+**Vitals:**
+
+| Parameter | [Date/Time 1] | [Date/Time 2] | [Date/Time 3] | [Date/Time 4] |
+|-----------|---------------|---------------|---------------|---------------|
+| BP: | [value] | [value] | [value] | [value] |
+| Pulse: | [value] | [value] | [value] | [value] |
+| Resp: | [value] | [value] | [value] | [value] |
+| Temp: | [value] °C (°F) | [value] °C (°F) | [value] °C (°F) | [value] °C (°F) |
+| TempSrc: | [Oral/Tympanic] | [Oral/Tympanic] | [Oral/Tympanic] | [Oral/Tympanic] |
+| SpO2: | [value]% | [value]% | [value]% | [value]% |
+| Weight: | [value] | | | |
+| Height: | [value] | | | |
+
+---
+
+**Physical Exam:**
+
+Gen: [General appearance - e.g., NAD (No Acute Distress)]
+Pulm: [Pulmonary exam - e.g., breathing comfortably on room air]
+Abd: [Abdominal exam - e.g., soft, non distended, TTP diffusely but more acutely in LLQ and RLQ w/ guarding]
+Extremities: [Extremity exam - e.g., WWP, moving all extremities]
+
+---
+
+**Input and Output 12Hrs Interval:**
+
+| Date | [Date Range 1] | [Date Range 2] |
+|------|----------------|----------------|
+| Shift | 0700-1859 | 1900-0659 | 24 Hour Total | 0700-1859 | 1900-0659 | 24 Hour Total |
+| **INTAKE** |
+| Shift Total (mL/kg) | | | | | | |
+| **OUTPUT** |
+| Drains | [value] | [value] | | [value] | [value] | |
+| Shift Total (mL/kg) | [value] | [value] | | [value] | [value] | |
+| **Weight (kg)** | [value] | [value] | | [value] | [value] | |
+
+---
+
+**Laboratory Results Last 24Hrs:**
+
+**BMP (Last 24 hrs):**
+| Labs (Last 24 hrs) | [Date/Time] |
+|--------------------|-------------|
+| GLUCOSE | [value] |
+| NA | [value] |
+| K | [value] |
+| CHLOR | [value] |
+| CO2 | [value] |
+| BUN | [value] |
+| CA | [value] |
+| CREAT | [value] |
+
+**CBC (Last 24 hrs):**
+| Labs (Last 24 hrs) | [Date/Time] |
+|--------------------|-------------|
+| WBC | [value] |
+| RBC | [value] |
+| HGB | [value] |
+| HEMATOCRIT | [value] |
+| MCV | [value] |
+| MCHC | [value] |
+| MCHGB | [value] |
+| RDW | [value] |
+| PLTS | [value] |
+| MPV | [value] |
+
+---
+
+**Assessment and Plan:**
+
+[Patient Name] is a [age] y.o. [gender] with PMHx [relevant history], admitted to [service] for [diagnosis].
+
+[Clinical assessment summary - e.g., "Improvement of diverticulitis on interval imaging with resolution of mesenteric free air. However, clinical exam inconsistent with improvement with imaging findings."]
+
+**Recommendations:**
+- [Recommendation 1 - e.g., Inc to 2g CTX]
+- [Recommendation 2 - e.g., Change flagyl frequency to q8]
+- [Recommendation 3 - e.g., Pain/nausea control PRN]
+- [Recommendation 4 - e.g., Rest of management per primary team]
+- [Recommendation 5 - e.g., Surgery Team IV to follow]
+
+---
+
+Discussed with surgical attending, Dr. [Attending Name].
+
+[Provider Name, Credentials]
+[Title - e.g., PGY-2], [Specialty - e.g., Surgery]`,
 
   discharge: `Generate a Discharge Summary in the following format. Use the exact section headers and structure shown below. Leave sections blank or write "N/A" if data is not available.
 
